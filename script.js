@@ -4,14 +4,20 @@ function onDropdownButton(button) {
     let questionContainer = button.parentElement
 
     if (activeQuestionCont != null && activeQuestionCont != questionContainer) {
-        activeQuestionCont.getElementsByTagName("p")[0].className = ""
+        switchDropdown(activeQuestionCont.getElementsByTagName("p")[0], "")
     }
     
     switchDropdown(questionContainer.getElementsByTagName("p")[0])
     activeQuestionCont = questionContainer
 }
 
-function switchDropdown(dropdownText) {
+function switchDropdown(dropdownText, forceValue = null) {
+
+    if (forceValue != null)
+    {
+        dropdownText.className = forceValue
+        return
+    }
 
     if (dropdownText.className == "") {
         dropdownText.className = "show"
